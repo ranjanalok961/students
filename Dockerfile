@@ -4,12 +4,9 @@ WORKDIR /app
 
 COPY . .
 
-# Give permission to mvnw
 RUN chmod +x mvnw
-
-# Build application
 RUN ./mvnw clean package -DskipTests
 
-EXPOSE 8080
+EXPOSE 5000
 
-CMD sh -c "java -jar target/*.jar"
+CMD ["java", "-jar", "target/students-0.0.1-SNAPSHOT.jar", "--server.port=5000"]
